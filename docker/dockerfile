@@ -1,0 +1,31 @@
+from ubuntu:latest
+
+RUN apt-get update
+RUN apt-get -y install python-pip git
+RUN pip install numpy pandas
+RUN apt-get -y install tcl-dev tk-dev python-tk
+RUN git clone https://github.com/matplotlib/matplotlib.git
+RUN cd matplotlib && python setup.py install
+
+RUN wget http://sourceforge.net/projects/matplotlib/files/matplotlib-toolkits/basemap-1.0.7/basemap-1.0.7.tar.gz
+RUN tar xvf basemap-1.0.7.tar.gz
+
+RUN cd basemap-1.0.7/geos-3.3.3 && ./configure && make && make install
+RUN cd basemap-1.0.7 && python setup.py install
+
+RUN wget http://download.osgeo.org/proj/proj-4.8.0.tar.gz
+RUN wget http://download.osgeo.org/proj/proj-datumgrid-1.5.tar.gz
+
+RUN tar xzf proj-4.8.0.tar.gz && cd proj-4.8.0/nad && tar xzf ../../proj-datumgrid-1.5.tar.gz
+RUN cd proj-4.8.0 && ./configure && make && make install 
+
+RUN wget http://download.osgeo.org/gdal/gdal-1.9.2.tar.gz
+RUN tar xzf gdal-1.9.2.tar.gz
+RUN cd gdal-1.9.2 && ./configure && make && make install
+
+RUN wget http://download.osgeo.org/geos/geos-3.3.8.tar.bz2
+RUN wget 
+
+RUN wget http://download.osgeo.org/gdal/gdal-1.9.2.tar.gz
+RUN tar xvf gdal-1.9.2.tar.gz
+RUN 
